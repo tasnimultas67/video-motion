@@ -1,14 +1,9 @@
-async function getTrendingVideos() {
-  const apiKey = process.env.YOUTUBE_API_KEY;
-  const url = `https://www.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&maxResults=12&key=${apiKey}`;
+import Link from "next/link";
 
-<<<<<<< HEAD
 async function getTrendingVideos() {
   const apiKey = process.env.YOUTUBE_API_KEY;
   const url = `https://www.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&maxResults=21&key=${apiKey}`;
 
-=======
->>>>>>> 53cc26b4c2a1865e56d88c0afa3b4455f99e80aa
   try {
     const response = await fetch(url);
     if (!response.ok) {
@@ -27,9 +22,9 @@ export default async function Home() {
 
   return (
     <div className="min-h-screen bg-gray-900 text-white p-8">
+      <h1 className="text-4xl font-bold mb-8">Trending Videos</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {videos.map((video) => (
-<<<<<<< HEAD
           <Link key={video.id} href={`/video/${video.id}`}>
             <div className="bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition duration-300 cursor-pointer">
               <img
@@ -41,17 +36,6 @@ export default async function Home() {
               <p className="text-gray-400">{video.snippet.channelTitle}</p>
             </div>
           </Link>
-=======
-          <div key={video.id} className="bg-gray-800 p-4 rounded-lg">
-            <img
-              src={video.snippet.thumbnails.medium.url}
-              alt={video.snippet.title}
-              className="w-full h-48 object-cover rounded-lg mb-4"
-            />
-            <h2 className="text-xl font-semibold">{video.snippet.title}</h2>
-            <p className="text-gray-400">{video.snippet.channelTitle}</p>
-          </div>
->>>>>>> 53cc26b4c2a1865e56d88c0afa3b4455f99e80aa
         ))}
       </div>
     </div>
