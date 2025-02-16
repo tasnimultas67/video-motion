@@ -29,7 +29,7 @@ export default async function VideoPage({ params }) {
   return (
     <div className="min-h-screen bg-gray-900 text-white p-8">
       <div className="max-w-4xl mx-auto">
-        <div className="aspect-w-16 aspect-h-9">
+        <div className="aspect-w-16 h-[500px]">
           <iframe
             src={`https://www.youtube.com/embed/${params.id}`}
             className="w-full h-full rounded-lg"
