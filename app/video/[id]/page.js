@@ -1,6 +1,4 @@
-"use client";
 import {} from "lucide-react";
-import ReactPlayer from "react-player/youtube";
 
 async function getVideoDetails(videoId) {
   const apiKey = process.env.YOUTUBE_API_KEY;
