@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Dialog, DialogPanel } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
+import Image from "next/image";
 
 const navigation = [
   { name: "Product", href: "#" },
@@ -23,9 +24,21 @@ export default function Header() {
           className="flex items-center justify-between p-4 lg:px-8"
         >
           <div className="flex lg:flex-1">
-            <Link href="/" className="-m-1.5 p-1.5">
+            <Link
+              href="/"
+              className="-m-1.5 p-1.5 bg-red-400/20 rounded-lg px-3 border border-red-300 border-dashed"
+            >
               <span className="sr-only">Video Motion</span>
-              <h3 className="font-bold text-lg">Video Motion</h3>
+              <div className="flex items-center justify-start gap-1">
+                <Image
+                  src="/favicon.ico"
+                  width={20}
+                  height={20}
+                  alt="logo"
+                  className="rotate-90"
+                ></Image>
+                <h3 className="font-bold text-lg">Video Motion</h3>
+              </div>
             </Link>
           </div>
           <div className="flex lg:hidden">
