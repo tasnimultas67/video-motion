@@ -3,13 +3,14 @@
 import { Bars3Icon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import Image from "next/image";
-import { Bell, CircleUser, Plus, Search } from "lucide-react";
+import { Bell, CircleUser, Plus } from "lucide-react";
 import { CheckBadgeIcon, MicrophoneIcon } from "@heroicons/react/24/solid";
 import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
 } from "@radix-ui/react-hover-card";
+import Search from "./Search";
 
 const socials = [
   {
@@ -82,25 +83,8 @@ export default function Header() {
           </div>
 
           {/* Search Button */}
-          <div className="flex items-center justify-center gap-3">
-            <div className="group flex items-center">
-              <div className="flex h-9 md:ml-10 md:pl-5 border border-gray-300 rounded-l-3xl group-focus-within:border-black md:group-focus-within:ml-5 md:group-focus-within:pl-0 ">
-                <div className="w-10 justify-center items-center hidden group-focus-within:md:flex">
-                  <Search className="size-4" />
-                </div>
-                <input
-                  type="text"
-                  placeholder="Search"
-                  className="w-44 px-5 bg-transparent outline-none text-black dark:text-white md:pl-0 md:group-focus-within:pl-0 md:w-64 lg:w-[500px]"
-                />
-              </div>
-              <button className="w-[40px] md:w-[60px] h-8 md:h-9 flex items-center justify-center border border-l-0 border-gray-300 rounded-r-3xl bg-gray-100 hover:bg-gray-200">
-                <Search className="size-5" />
-              </button>
-            </div>
-            <button className="p-2 bg-gray-100 rounded-full hover:bg-gray-200">
-              <MicrophoneIcon className="size-5"></MicrophoneIcon>
-            </button>
+          <div>
+            <Search></Search>
           </div>
 
           <div className="hidden lg:flex lg:flex-1 lg:justify-end items-center gap-5">
