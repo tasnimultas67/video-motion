@@ -19,18 +19,18 @@ export default function Header() {
           <div className="flex lg:flex-1">
             <Link
               href="/"
-              className="-m-1.5 p-1.5 bg-red-400/20 rounded-lg px-3 border border-red-300 border-dashed"
+              className="-m-1.5 p-1 bg-red-400/10 rounded-lg px-3 border border-red-300 border-dashed"
             >
               <span className="sr-only">Video Motion</span>
               <div className="flex items-center justify-start gap-1">
                 <Image
                   src="/favicon.ico"
-                  width={20}
-                  height={20}
+                  width={15}
+                  height={15}
                   alt="logo"
                   className="rotate-90"
                 ></Image>
-                <h3 className="font-bold text-lg">Video Motion</h3>
+                <h3 className="font-bold text-base">Video Motion</h3>
               </div>
             </Link>
           </div>
