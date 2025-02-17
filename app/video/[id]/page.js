@@ -31,7 +31,7 @@ export default async function VideoPage({ params }) {
       <div className="max-w-4xl mx-auto">
         <div className="aspect-w-16 h-[500px]">
           <iframe
-            src={`https://www.youtube.com/embed/${params.id}`}
+            src={`https://www.youtube.com/embed/${params.id}?autoplay=1`}
             className="w-full h-full rounded-lg"
             allowFullScreen
           />
