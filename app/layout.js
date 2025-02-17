@@ -1,4 +1,4 @@
-import { Geist, Geist_Mono, Outfit } from "next/font/google";
+import { Outfit } from "next/font/google";
 import "./globals.css";
 import Header from "./components/Header";
 
