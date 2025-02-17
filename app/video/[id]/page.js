@@ -1,4 +1,6 @@
+"use client";
 import {} from "lucide-react";
+import ReactPlayer from "react-player/youtube";
 
 async function getVideoDetails(videoId) {
   const apiKey = process.env.YOUTUBE_API_KEY;
@@ -37,6 +39,14 @@ export default async function VideoPage({ params }) {
             className="w-full h-full rounded-xl"
             allowFullScreen
           />
+          {/* <ReactPlayer
+            url={`https://www.youtube.com/watch?v=${params.id}`}
+            controls
+            width="100%"
+            height="100%"
+            style={{ backgroundColor: "#000000" }}
+            playing={true}
+          /> */}
         </div>
         <h1 className="text-xl font-semibold mt-4">{video.snippet.title}</h1>
         <div className="flex items-center justify-start gap-1">
