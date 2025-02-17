@@ -11,12 +11,12 @@ const VideoCard = ({ video }) => {
           alt={video.snippet.title}
           width={300}
           height={200}
-          className="w-full h-48 object-cover rounded-lg mb-4"
+          className="w-full h-48 object-cover rounded-xl mb-4"
         />
         <h2 className="text-base font-medium line-clamp-2">
           {video.snippet.title}
         </h2>
-        <p className="text-gray-400">{video.snippet.channelTitle}</p>
+        <p className="text-gray-600">{video.snippet.channelTitle}</p>
       </div>
     </Link>
   );
