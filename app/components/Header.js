@@ -82,14 +82,14 @@ export default function Header() {
             </div>
             <button
               // onClick={searchQueryHandler2}
-              className="w-[40px] md:w-[60px] h-8 md:h-9 flex items-center justify-center border border-l-0 border-gray-400 rounded-r-3xl bg-gray-100"
+              className="w-[40px] md:w-[60px] h-8 md:h-9 flex items-center justify-center border border-l-0 border-gray-400 rounded-r-3xl bg-gray-100 hover:bg-gray-200"
             >
               <Search className="size-5" />
             </button>
           </div>
 
           <div className="hidden lg:flex lg:flex-1 lg:justify-end items-center gap-5">
-            <button className="flex items-center justify-center gap-2 bg-gray-100 rounded-full p-2 px-3 text-sm">
+            <button className="flex items-center justify-center gap-2 bg-gray-100 hover:bg-gray-200 rounded-full p-2 px-3 text-sm">
               <Plus className="size-5"></Plus> Create
             </button>
             <Bell className="size-6"></Bell>
