@@ -1,15 +1,50 @@
 "use client";
 
-import { useState } from "react";
 import { Bars3Icon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import Image from "next/image";
-import { Bell, Plus, Search } from "lucide-react";
-import { MicrophoneIcon } from "@heroicons/react/24/solid";
+import { Bell, CircleUser, Plus, Search } from "lucide-react";
+import { CheckBadgeIcon, MicrophoneIcon } from "@heroicons/react/24/solid";
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "@radix-ui/react-hover-card";
+
+const socials = [
+  {
+    id: 1,
+    icon: "/socialIcons/facebook.svg",
+    title: "Facebook",
+    href: "https://www.facebook.com/tasnimulh.tas/",
+  },
+  {
+    id: 2,
+    icon: "/socialIcons/instagram.svg",
+    title: "Instagram",
+    href: "https://www.instagram.com/_tasnimul_haque/",
+  },
+  {
+    id: 3,
+    icon: "/socialIcons/linkedin.svg",
+    title: "LinkedIn",
+    href: "https://www.linkedin.com/in/tasnimul-haque-/",
+  },
+  {
+    id: 4,
+    icon: "/socialIcons/github.svg",
+    title: "Github",
+    href: "https://github.com/tasnimultas67",
+  },
+  {
+    id: 5,
+    icon: "/socialIcons/twitter.svg",
+    title: "Twitter",
+    href: "https://x.com/tasnimultas",
+  },
+];
 
 export default function Header() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
   return (
     <div className="bg-white  top-0 left-0 sticky z-[1000] border-b">
       <header className="relative left-0 top-0 z-50">
@@ -75,13 +110,79 @@ export default function Header() {
             <button className="p-2 hover:bg-gray-200 rounded-full">
               <Bell className="size-5"></Bell>
             </button>
-            <Image
-              src="https://tasnimul.vercel.app/_next/image?url=%2FTasnimul-Haque-3.jpg&w=1080&q=75"
-              width={30}
-              height={30}
-              alt="Account"
-              className="size-8 rounded-full"
-            ></Image>
+            {/* Profile Icon */}
+            <div className="relative top-0 right-0 cursor-pointer">
+              <HoverCard className="bg-white">
+                <HoverCardTrigger>
+                  <Image
+                    src="https://tasnimul.vercel.app/_next/image?url=%2FTasnimul-Haque-3.jpg&w=1080&q=75"
+                    width={30}
+                    height={30}
+                    alt="Account"
+                    className="size-8 rounded-full"
+                  ></Image>
+                </HoverCardTrigger>
+                <HoverCardContent>
+                  <div className="absolute top-0 right-0 w-[300px] space-y-4 bg-white p-2 drop-shadow-2xl rounded-xl border">
+                    <div className="flex items-center gap-2">
+                      <Image
+                        className="rounded-full w-16 h-16 object-cover"
+                        src="https://tasnimul.vercel.app/_next/image?url=%2FTasnimul-Haque-3.jpg&w=1080&q=75"
+                        width={50}
+                        height={50}
+                        alt=""
+                      ></Image>
+                      <div className="">
+                        <h3 className="text-xs font-semibold text-black">
+                          Tasnimul Haque
+                        </h3>
+                        <p className="!text-xs font-light text-themeColor/80 flex items-center gap-1 justify-center">
+                          Web Developer{" "}
+                          <CheckBadgeIcon className="size-3 -mb-0.5 "></CheckBadgeIcon>
+                        </p>
+                      </div>
+                    </div>
+                    <div>
+                      <p className="text-xs font-light line-clamp-2 leading-tight">
+                        Since the internet was introduced to me at an early age,
+                        I always aspired to use the internet to benefit myself
+                        or other people. I realised that the internet is a
+                        powerful tool capable of solving any problem.{" "}
+                      </p>
+                    </div>
+
+                    <div className="flex items-center gap-2 justify-start">
+                      {socials.map((social) => (
+                        <Link
+                          key={social.id}
+                          href={social.href}
+                          target="_blank"
+                          className=""
+                        >
+                          <Image
+                            className="size-4"
+                            src={social.icon}
+                            width={20}
+                            height={20}
+                            alt=""
+                          ></Image>
+                        </Link>
+                      ))}
+                    </div>
+                    <div className="">
+                      <Link
+                        href="https://tasnimul.vercel.app/about"
+                        target="_blank"
+                      >
+                        <button className="bg-red-700 w-full p-2 text-white rounded text-xs font-light flex items-center justify-center gap-2">
+                          <CircleUser className="size-4" /> About
+                        </button>
+                      </Link>
+                    </div>
+                  </div>
+                </HoverCardContent>
+              </HoverCard>
+            </div>
           </div>
         </nav>
       </header>
