@@ -22,7 +22,6 @@ export default async function Home() {
 
   return (
     <div className="min-h-screen bg-gray-900 text-white p-8">
-      <h1 className="text-4xl font-bold mb-8">Trending Videos</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {videos.map((video) => (
           <Link key={video.id} href={`/video/${video.id}`}>
