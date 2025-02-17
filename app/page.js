@@ -1,4 +1,5 @@
 import Link from "next/link";
+import VideoCard from "./components/VideoCard";
 
 async function getTrendingVideos() {
   const apiKey = process.env.YOUTUBE_API_KEY;
@@ -19,24 +20,13 @@ async function getTrendingVideos() {
 
 export default async function Home() {
   const videos = await getTrendingVideos();
+  console.log(videos);
 
   return (
     <div className="min-h-screen bg-gray-900 text-white p-8">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
         {videos.map((video) => (
-          <Link key={video.id} href={`/video/${video.id}`}>
-            <div className="bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition duration-300 cursor-pointer">
-              <img
-                src={video.snippet.thumbnails.medium.url}
-                alt={video.snippet.title}
-                className="w-full h-48 object-cover rounded-lg mb-4"
-              />
-              <h2 className="text-xl font-semibold line-clamp-2">
-                {video.snippet.title}
-              </h2>
-              <p className="text-gray-400">{video.snippet.channelTitle}</p>
-            </div>
-          </Link>
+          <VideoCard key={video.id} video={video} />
         ))}
       </div>
     </div>
