@@ -20,6 +20,7 @@ async function getVideoDetails(videoId) {
 
 export default async function VideoPage({ params }) {
   const video = await getVideoDetails(params.id);
+  console.log(video);
 
   if (!video) {
     return (
