@@ -199,7 +199,7 @@ export default async function VideoPage({ params }) {
             </div>
           ))
         ) : (
-          <p className="text-gray-500">No related videos available.</p>
+          <p className="text-gray-500">Unable to load related videos.</p>
         )}
       </div>
     </div>
