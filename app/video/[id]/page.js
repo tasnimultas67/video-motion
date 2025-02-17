@@ -4,6 +4,7 @@ import {} from "lucide-react";
 async function getVideoDetails(videoId) {
   const apiKey = process.env.YOUTUBE_API_KEY;
   const url = `https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics&id=${videoId}&key=${apiKey}`;
+  console.log(url);
 
   try {
     const response = await fetch(url);
