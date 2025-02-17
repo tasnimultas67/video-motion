@@ -17,7 +17,7 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <div className="bg-white  top-0 left-0 sticky z-[1000]">
+    <div className="bg-white  top-0 left-0 sticky z-[1000] border-b">
       <header className="relative left-0 top-0 z-50">
         <nav
           aria-label="Global"

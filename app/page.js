@@ -20,11 +20,11 @@ async function getTrendingVideos() {
 
 export default async function Home() {
   const videos = await getTrendingVideos();
-  console.log(videos);
+  // console.log(videos);
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white p-8">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
+    <div className="min-h-screen bg-white text-black p-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1 items-stretch">
         {videos.map((video) => (
           <VideoCard key={video.id} video={video} />
         ))}
