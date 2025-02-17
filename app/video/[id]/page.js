@@ -25,11 +25,14 @@ async function getRelatedVideos(videoId) {
 
   try {
     const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error("Failed to fetch related videos");
+    }
     const data = await response.json();
-    return data.items;
+    return data.items || []; // Return an empty array if `items` is undefined
   } catch (error) {
     console.error("Error fetching related videos:", error);
-    return [];
+    return []; // Return an empty array in case of an error
   }
 }
 
@@ -39,11 +42,14 @@ async function getComments(videoId) {
 
   try {
     const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error("Failed to fetch comments");
+    }
     const data = await response.json();
-    return data.items;
+    return data.items || []; // Return an empty array if `items` is undefined
   } catch (error) {
     console.error("Error fetching comments:", error);
-    return [];
+    return []; // Return an empty array in case of an error
   }
 }
 
@@ -64,6 +70,7 @@ export default async function VideoPage({ params }) {
     <div className="min-h-screen bg-white text-black p-8 grid grid-cols-3 gap-6">
       {/* Main Content */}
       <div className="col-span-2">
+        {/* Video Player */}
         <div className="aspect-w-16 h-[500px]">
           <iframe
             src={`https://www.youtube.com/embed/${params.id}?autoplay=1`}
@@ -122,63 +129,78 @@ export default async function VideoPage({ params }) {
             {Number(video.statistics.commentCount).toLocaleString()} Comments
           </h2>
 
-          {comments.map((comment) => (
-            <div key={comment.id} className="flex gap-3 mt-4">
-              <img
-                src={
-                  comment.snippet.topLevelComment.snippet.authorProfileImageUrl
-                }
-                className="w-8 h-8 rounded-full"
-                alt={comment.snippet.topLevelComment.snippet.authorDisplayName}
-              />
-              <div>
-                <div className="flex items-center gap-2">
-                  <p className="font-semibold">
-                    {comment.snippet.topLevelComment.snippet.authorDisplayName}
+          {comments.length > 0 ? (
+            comments.map((comment) => (
+              <div key={comment.id} className="flex gap-3 mt-4">
+                <img
+                  src={
+                    comment.snippet.topLevelComment.snippet
+                      .authorProfileImageUrl
+                  }
+                  className="w-8 h-8 rounded-full"
+                  alt={
+                    comment.snippet.topLevelComment.snippet.authorDisplayName
+                  }
+                />
+                <div>
+                  <div className="flex items-center gap-2">
+                    <p className="font-semibold">
+                      {
+                        comment.snippet.topLevelComment.snippet
+                          .authorDisplayName
+                      }
+                    </p>
+                    <span className="text-sm text-gray-500">
+                      {new Date(
+                        comment.snippet.topLevelComment.snippet.publishedAt
+                      ).toLocaleDateString()}
+                    </span>
+                  </div>
+                  <p className="mt-1">
+                    {comment.snippet.topLevelComment.snippet.textDisplay}
                   </p>
-                  <span className="text-sm text-gray-500">
-                    {new Date(
-                      comment.snippet.topLevelComment.snippet.publishedAt
-                    ).toLocaleDateString()}
-                  </span>
-                </div>
-                <p className="mt-1">
-                  {comment.snippet.topLevelComment.snippet.textDisplay}
-                </p>
-                <div className="flex items-center gap-4 mt-2">
-                  <ThumbsUp className="w-4 h-4" />
-                  <span className="text-sm text-gray-500">
-                    {Number(
-                      comment.snippet.topLevelComment.snippet.likeCount
-                    ).toLocaleString()}
-                  </span>
+                  <div className="flex items-center gap-4 mt-2">
+                    <ThumbsUp className="w-4 h-4" />
+                    <span className="text-sm text-gray-500">
+                      {Number(
+                        comment.snippet.topLevelComment.snippet.likeCount
+                      ).toLocaleString()}
+                    </span>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))
+          ) : (
+            <p className="text-gray-500">No comments available.</p>
+          )}
         </div>
       </div>
 
       {/* Related Videos Sidebar */}
       <div className="space-y-4">
-        {relatedVideos.map((relatedVideo) => (
-          <div key={relatedVideo.id.videoId} className="flex gap-3">
-            <img
-              src={relatedVideo.snippet.thumbnails.medium.url}
-              className="w-40 h-24 rounded-xl"
-              alt={relatedVideo.snippet.title}
-            />
-            <div>
-              <h3 className="font-semibold line-clamp-2">
-                {relatedVideo.snippet.title}
-              </h3>
-              <p className="text-sm text-gray-500 mt-1">
-                {relatedVideo.snippet.channelTitle}
-              </p>
-              <p className="text-sm text-gray-500">123K views • 2 days ago</p>
+        <h2 className="text-xl font-bold">Related Videos</h2>
+        {relatedVideos.length > 0 ? (
+          relatedVideos.map((relatedVideo) => (
+            <div key={relatedVideo.id.videoId} className="flex gap-3">
+              <img
+                src={relatedVideo.snippet.thumbnails.medium.url}
+                className="w-40 h-24 rounded-xl"
+                alt={relatedVideo.snippet.title}
+              />
+              <div>
+                <h3 className="font-semibold line-clamp-2">
+                  {relatedVideo.snippet.title}
+                </h3>
+                <p className="text-sm text-gray-500 mt-1">
+                  {relatedVideo.snippet.channelTitle}
+                </p>
+                <p className="text-sm text-gray-500">123K views • 2 days ago</p>
+              </div>
             </div>
-          </div>
-        ))}
+          ))
+        ) : (
+          <p className="text-gray-500">No related videos available.</p>
+        )}
       </div>
     </div>
   );
