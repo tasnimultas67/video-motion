@@ -27,19 +27,27 @@ export default async function VideoPage({ params }) {
   }
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white p-8">
-      <div className="max-w-4xl mx-auto">
+    <div className="min-h-screen bg-white text-black p-8 grid grid-cols-3">
+      <div className="col-span-2">
         <div className="aspect-w-16 h-[500px]">
           <iframe
             src={`https://www.youtube.com/embed/${params.id}?autoplay=1`}
-            className="w-full h-full rounded-lg"
+            className="w-full h-full rounded-xl"
             allowFullScreen
           />
         </div>
-        <h1 className="text-2xl font-bold mt-4">{video.snippet.title}</h1>
-        <p className="text-gray-400">{video.snippet.channelTitle}</p>
-        <p className="text-gray-400 mt-2">{video.statistics.viewCount} views</p>
+        <h1 className="text-xl font-semibold mt-4">{video.snippet.title}</h1>
+        <div className="flex items-center justify-start gap-1">
+          <div className="size-6 rounded-full border bg-slate-400"></div>
+          <p className="text-black font-semibold">
+            {video.snippet.channelTitle}
+          </p>
+        </div>
+        <div className="mt-2 p-2 rounded-xl bg-gray-200 text-sm">
+          <p className="font-semibold">{video.statistics.viewCount} views</p>
+        </div>
       </div>
+      <div></div>
     </div>
   );
 }
