@@ -2,6 +2,7 @@ import { CheckCircleIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { timeAgo } from "../utils/timeAgo";
 
 const VideoCard = ({ video }) => {
   // Function to format the duration (e.g., PT1H5M30S -> 1:05:30)
@@ -51,7 +52,8 @@ const VideoCard = ({ video }) => {
               <CheckCircleIcon className="size-3.5 rounded-full text-gray-600" />
             </p>
             <p className="text-gray-600 text-sm">
-              {parseInt(video.statistics.viewCount).toLocaleString()} views
+              {parseInt(video.statistics.viewCount).toLocaleString()} views •{" "}
+              {timeAgo(video.snippet.publishedAt)} {/* Display upload time */}
             </p>
           </div>
         </div>
