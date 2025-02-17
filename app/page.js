@@ -52,7 +52,7 @@ export default async function Home() {
 
   return (
     <div className="min-h-screen bg-white text-black p-8">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 items-stretch">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 items-stretch">
         {videos.map((video) => (
           <VideoCard key={video.id} video={video} />
         ))}
