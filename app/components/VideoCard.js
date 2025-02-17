@@ -19,7 +19,7 @@ const VideoCard = ({ video }) => {
 
   return (
     <Link href={`/video/${video.id}`}>
-      <div className="p-2 rounded-lg transition duration-300 cursor-pointer">
+      <div className="p-0 rounded-lg transition duration-300 cursor-pointer">
         <div className="relative">
           <Image
             src={video.snippet.thumbnails.medium.url}
