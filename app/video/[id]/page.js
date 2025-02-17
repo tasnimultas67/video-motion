@@ -1,3 +1,5 @@
+import {} from "lucide-react";
+
 async function getVideoDetails(videoId) {
   const apiKey = process.env.YOUTUBE_API_KEY;
   const url = `https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics&id=${videoId}&key=${apiKey}`;
@@ -40,7 +42,8 @@ export default async function VideoPage({ params }) {
         <div className="flex items-center justify-start gap-1">
           <div className="size-6 rounded-full border bg-slate-400"></div>
           <p className="text-black font-semibold">
-            {video.snippet.channelTitle}
+            {video.snippet.channelTitle}{" "}
+            {/* <CheckCircle className="size-4  rounded-full text-gray-600"></CheckCircle> */}
           </p>
         </div>
         <div className="mt-2 p-2 rounded-xl bg-gray-200 text-sm">
