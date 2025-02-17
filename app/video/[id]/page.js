@@ -1,3 +1,4 @@
+import { CheckCircleIcon } from "@heroicons/react/24/solid";
 import {} from "lucide-react";
 
 async function getVideoDetails(videoId) {
@@ -37,21 +38,13 @@ export default async function VideoPage({ params }) {
             className="w-full h-full rounded-xl"
             allowFullScreen
           />
-          {/* <ReactPlayer
-            url={`https://www.youtube.com/watch?v=${params.id}`}
-            controls
-            width="100%"
-            height="100%"
-            style={{ backgroundColor: "#000000" }}
-            playing={true}
-          /> */}
         </div>
         <h1 className="text-xl font-semibold mt-4">{video.snippet.title}</h1>
         <div className="flex items-center justify-start gap-1">
           <div className="size-6 rounded-full border bg-slate-400"></div>
-          <p className="text-black font-semibold">
+          <p className="text-black font-semibold flex items-center justify-start gap-1">
             {video.snippet.channelTitle}{" "}
-            {/* <CheckCircle className="size-4  rounded-full text-gray-600"></CheckCircle> */}
+            <CheckCircleIcon className="size-4  rounded-full text-gray-600"></CheckCircleIcon>
           </p>
         </div>
         <div className="mt-2 p-2 rounded-xl bg-gray-200 text-sm">
