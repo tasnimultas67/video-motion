@@ -10,6 +10,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "tasnimul.vercel.app",
       },
+      {
+        protocol: "https",
+        hostname: "yt3.ggpht.com",
+      },
     ],
   },
 };
