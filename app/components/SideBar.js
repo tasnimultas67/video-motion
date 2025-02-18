@@ -40,7 +40,7 @@ export default function SideBar({ setSideOpen, sideOpen }) {
                   </button>
                 </div> */}
               </TransitionChild>
-              <div className="flex h-full flex-col overflow-y-scroll bg-white py-5 shadow-xl">
+              <div className="flex h-full flex-col overflow-y-scroll bg-white py-4 shadow-xl">
                 <div className="px-4 sm:px-6">
                   <DialogTitle className="text-base font-semibold text-gray-900">
                     <div className="flex items-center justify-start gap-2">
