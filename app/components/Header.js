@@ -11,6 +11,8 @@ import {
   HoverCardTrigger,
 } from "@radix-ui/react-hover-card";
 import Search from "./Search";
+import SideBar from "./SideBar";
+import { useState } from "react";
 
 const socials = [
   {
@@ -46,13 +48,24 @@ const socials = [
 ];
 
 export default function Header() {
+  const [sideOpen, setSideOpen] = useState(false);
   return (
     <div className="bg-white  top-0 left-0 sticky z-[1000] border-b">
       <header className="relative left-0 top-0 z-50">
         <nav
           aria-label="Global"
-          className="flex items-center justify-between p-3 lg:px-8"
+          className="flex items-center justify-between p-3 lg:px-8 gap-4"
         >
+          <div>
+            <button className="flex items-center ">
+              <Bars3Icon
+                onClick={() => setSideOpen(true)}
+                className="size-6"
+              ></Bars3Icon>
+              <SideBar sideOpen={sideOpen} setSideOpen={setSideOpen}></SideBar>
+            </button>
+          </div>
+          {/* Logo */}
           <div className="flex lg:flex-1">
             <Link
               href="/"
