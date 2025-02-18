@@ -1,10 +1,10 @@
 import { CheckCircleIcon } from "@heroicons/react/24/solid";
 import { ThumbsUp, Share2, MessageSquare } from "lucide-react";
 
+// Fetch video details
 async function getVideoDetails(videoId) {
   const apiKey = process.env.YOUTUBE_API_KEY;
   const url = `https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics&id=${videoId}&key=${apiKey}`;
-  console.log(url);
 
   try {
     const response = await fetch(url);
@@ -19,9 +19,10 @@ async function getVideoDetails(videoId) {
   }
 }
 
+// Fetch related videos
 async function getRelatedVideos(videoId) {
   const apiKey = process.env.YOUTUBE_API_KEY;
-  const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&relatedToVideoId=${videoId}&maxResults=10&key=${apiKey}`;
+  const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&relatedToVideoId=${videoId}&maxResults=14&key=${apiKey}`;
 
   try {
     const response = await fetch(url);
@@ -36,6 +37,25 @@ async function getRelatedVideos(videoId) {
   }
 }
 
+// Fetch popular videos as fallback
+async function getPopularVideos() {
+  const apiKey = process.env.YOUTUBE_API_KEY;
+  const url = `https://www.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&maxResults=40&key=${apiKey}`;
+
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error("Failed to fetch popular videos");
+    }
+    const data = await response.json();
+    return data.items || []; // Return an empty array if `items` is undefined
+  } catch (error) {
+    console.error("Error fetching popular videos:", error);
+    return []; // Return an empty array in case of an error
+  }
+}
+
+// Fetch comments
 async function getComments(videoId) {
   const apiKey = process.env.YOUTUBE_API_KEY;
   const url = `https://www.googleapis.com/youtube/v3/commentThreads?part=snippet&videoId=${videoId}&key=${apiKey}`;
@@ -56,6 +76,7 @@ async function getComments(videoId) {
 export default async function VideoPage({ params }) {
   const video = await getVideoDetails(params.id);
   const relatedVideos = await getRelatedVideos(params.id);
+  const popularVideos = await getPopularVideos();
   const comments = await getComments(params.id);
 
   if (!video) {
@@ -199,7 +220,31 @@ export default async function VideoPage({ params }) {
             </div>
           ))
         ) : (
-          <p className="text-gray-500">Unable to load related videos.</p>
+          <>
+            <p className="text-gray-500">
+              No related videos found. Here are some popular videos:
+            </p>
+            {popularVideos.map((video) => (
+              <div key={video.id} className="flex gap-3">
+                <img
+                  src={video.snippet.thumbnails.medium.url}
+                  className="w-40 h-24 rounded-xl"
+                  alt={video.snippet.title}
+                />
+                <div>
+                  <h3 className="font-semibold line-clamp-2">
+                    {video.snippet.title}
+                  </h3>
+                  <p className="text-sm text-gray-500 mt-1">
+                    {video.snippet.channelTitle}
+                  </p>
+                  <p className="text-sm text-gray-500">
+                    123K views • 2 days ago
+                  </p>
+                </div>
+              </div>
+            ))}
+          </>
         )}
       </div>
     </div>
