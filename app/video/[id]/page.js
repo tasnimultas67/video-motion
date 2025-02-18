@@ -1,5 +1,6 @@
 import { CheckCircleIcon } from "@heroicons/react/24/solid";
 import { ThumbsUp, Share2, MessageSquare } from "lucide-react";
+import Link from "next/link";
 
 // Fetch video details
 async function getVideoDetails(videoId) {
@@ -224,26 +225,32 @@ export default async function VideoPage({ params }) {
             <p className="text-gray-500">
               No related videos found. Here are some popular videos:
             </p>
-            {popularVideos.map((video) => (
-              <div key={video.id} className="flex gap-3">
-                <img
-                  src={video.snippet.thumbnails.medium.url}
-                  className="w-40 h-24 rounded-xl"
-                  alt={video.snippet.title}
-                />
+            <div className="space-y-2">
+              {popularVideos.map((video) => (
                 <div>
-                  <h3 className="font-semibold line-clamp-2">
-                    {video.snippet.title}
-                  </h3>
-                  <p className="text-sm text-gray-500 mt-1">
-                    {video.snippet.channelTitle}
-                  </p>
-                  <p className="text-sm text-gray-500">
-                    123K views • 2 days ago
-                  </p>
+                  <Link key={video.id} href={`/video/${video.id}`} className="">
+                    <div className="flex gap-3">
+                      <img
+                        src={video.snippet.thumbnails.medium.url}
+                        className="w-40 h-24 rounded-xl"
+                        alt={video.snippet.title}
+                      />
+                      <div>
+                        <h3 className="font-semibold line-clamp-2">
+                          {video.snippet.title}
+                        </h3>
+                        <p className="text-sm text-gray-500 mt-1">
+                          {video.snippet.channelTitle}
+                        </p>
+                        <p className="text-sm text-gray-500">
+                          123K views • 2 days ago
+                        </p>
+                      </div>
+                    </div>
+                  </Link>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </>
         )}
       </div>
