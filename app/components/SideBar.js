@@ -31,7 +31,7 @@ export default function SideBar({ setSideOpen, sideOpen }) {
             {/* Panel with transition */}
             <DialogPanel
               transition
-              className="pointer-events-auto relative w-screen max-w-xs transform transition-all duration-500 ease-in-out data-[closed]:-translate-x-full"
+              className="pointer-events-auto relative w-screen max-w-[16rem] transform transition-all duration-500 ease-in-out data-[closed]:-translate-x-full"
             >
               {/* Panel content */}
               <div className="flex h-full flex-col overflow-y-scroll bg-white py-6 shadow-xl">
