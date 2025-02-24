@@ -1,6 +1,7 @@
 import { Outfit } from "next/font/google";
 import "./globals.css";
 import Header from "./components/Header";
+import FixedLeftBar from "./components/FixedLeftBar";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -19,7 +20,14 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${outfit.className} antialiased`}>
         <Header />
-        {children}
+        <div className="flex">
+          <div className="w-[5%]">
+            <div className="">
+              <FixedLeftBar></FixedLeftBar>
+            </div>
+          </div>
+          <div className="w-[95%]">{children}</div>
+        </div>
       </body>
     </html>
   );
