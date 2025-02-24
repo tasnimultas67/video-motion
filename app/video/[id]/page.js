@@ -89,7 +89,7 @@ export default async function VideoPage({ params }) {
   }
 
   return (
-    <div className="min-h-screen bg-white text-black p-8 grid grid-cols-3 gap-6">
+    <div className="min-h-screen bg-white text-black px-6 py-2 grid grid-cols-3 gap-6">
       {/* Main Content */}
       <div className="col-span-2">
         {/* Video Player */}
