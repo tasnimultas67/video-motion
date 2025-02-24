@@ -47,10 +47,29 @@ const socials = [
   },
 ];
 
+const youtubeCategories = [
+  "Edu",
+  "Entertain",
+  "Music",
+  "Gaming",
+  "Sports",
+  "News",
+  "Travel",
+  "Tech",
+  "Style",
+  "Comedy",
+  "Film",
+  "Blogs",
+  "Activism",
+  "Autos",
+  "Pets",
+];
+
 export default function Header() {
   const [sideOpen, setSideOpen] = useState(false);
+  console.log(youtubeCategories);
   return (
-    <div className="bg-white  top-0 left-0 sticky z-[1000] border-b">
+    <div className="bg-white  top-0 left-0 sticky z-[1000] ">
       <header className="relative left-0 top-0 z-50">
         <nav
           aria-label="Global"
@@ -183,6 +202,19 @@ export default function Header() {
           </div>
         </nav>
       </header>
+      <div className="flex items-center justify-start gap-2 relative left-20 pt-2 pb-3">
+        <button className="bg-black hover:bg-gray-200 px-1 py-1.5 rounded-md w-full text-sm font-semibold text-white">
+          All
+        </button>
+        {youtubeCategories.map((category) => (
+          <button
+            key={category}
+            className="bg-gray-100 hover:bg-gray-200 p-1.5 rounded-md w-full text-sm font-semibold"
+          >
+            {category}
+          </button>
+        ))}
+      </div>
     </div>
   );
 }
