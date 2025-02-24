@@ -2,14 +2,13 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import {
-  MagnifyingGlassCircleIcon,
-  MagnifyingGlassIcon,
-} from "@heroicons/react/24/outline";
+import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { MicrophoneIcon } from "@heroicons/react/24/solid";
+import WarningModal from "./WarningModal";
 
 export default function Search() {
   const [query, setQuery] = useState("");
+  const [wModal, setWModal] = useState(false);
   const router = useRouter();
 
   const handleSearch = (e) => {
@@ -43,11 +42,15 @@ export default function Search() {
               <MagnifyingGlassIcon className="size-5" />
             </button>
           </div>
-          <button className="p-2 bg-gray-100 rounded-full hover:bg-gray-200">
+          <button
+            onClick={() => setWModal(true)}
+            className="p-2 bg-gray-100 rounded-full hover:bg-gray-200"
+          >
             <MicrophoneIcon className="size-5"></MicrophoneIcon>
           </button>
         </div>
       </form>
+      <WarningModal wModal={wModal} setWModal={setWModal}></WarningModal>
     </div>
   );
 }
