@@ -16,6 +16,7 @@ import { useState } from "react";
 
 import HeaderSlide from "./HeaderSlide";
 import WarningModal from "./WarningModal";
+import { useRouter } from "next/navigation";
 
 const socials = [
   {
@@ -53,6 +54,8 @@ const socials = [
 export default function Header() {
   const [sideOpen, setSideOpen] = useState(false);
   const [wModal, setWModal] = useState(false);
+  const router = useRouter();
+  const isHomePage = router.pathname === "/";
   return (
     <div className="bg-white  top-0 left-0 sticky z-[1000]  pb-3 space-y-2">
       <header className="relative left-0 top-0 z-50">
@@ -193,7 +196,7 @@ export default function Header() {
           </div>
         </nav>
       </header>
-      <HeaderSlide></HeaderSlide>
+      {isHomePage && <HeaderSlide></HeaderSlide>}
       <WarningModal wModal={wModal} setWModal={setWModal}></WarningModal>
     </div>
   );
