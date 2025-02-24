@@ -4,7 +4,7 @@ import { Bars3Icon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import Image from "next/image";
 import { Bell, CircleUser, Plus } from "lucide-react";
-import { CheckBadgeIcon, MicrophoneIcon } from "@heroicons/react/24/solid";
+import { CheckBadgeIcon } from "@heroicons/react/24/solid";
 import {
   HoverCard,
   HoverCardContent,
@@ -12,8 +12,7 @@ import {
 } from "@radix-ui/react-hover-card";
 import Search from "./Search";
 import SideBar from "./SideBar";
-import { useState } from "react";
-
+import { useState, useEffect } from "react";
 import HeaderSlide from "./HeaderSlide";
 import WarningModal from "./WarningModal";
 import { useRouter } from "next/navigation";
@@ -54,22 +53,25 @@ const socials = [
 export default function Header() {
   const [sideOpen, setSideOpen] = useState(false);
   const [wModal, setWModal] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const router = useRouter();
   const isHomePage = router.pathname === "/";
+
   return (
-    <div className="bg-white  top-0 left-0 sticky z-[1000]  pb-3 space-y-2">
+    <div className="bg-white top-0 left-0 sticky z-[1000] pb-3 space-y-2">
       <header className="relative left-0 top-0 z-50">
         <nav
           aria-label="Global"
           className="flex items-center justify-between p-3 lg:px-8 gap-4"
         >
           <div>
-            <button className="flex items-center ">
+            <button className="flex items-center">
               <Bars3Icon
                 onClick={() => setSideOpen(true)}
                 className="size-6"
-              ></Bars3Icon>
-              <SideBar sideOpen={sideOpen} setSideOpen={setSideOpen}></SideBar>
+                aria-label="Open sidebar"
+              />
+              <SideBar sideOpen={sideOpen} setSideOpen={setSideOpen} />
             </button>
           </div>
           {/* Logo */}
@@ -86,7 +88,7 @@ export default function Header() {
                   height={15}
                   alt="logo"
                   className="rotate-90"
-                ></Image>
+                />
                 <h3 className="font-bold text-base">Video Motion</h3>
               </div>
             </Link>
@@ -101,28 +103,26 @@ export default function Header() {
               <Bars3Icon aria-hidden="true" className="size-6" />
             </button>
           </div>
-
           {/* Search Button */}
           <div>
-            <Search></Search>
+            <Search />
           </div>
-
           <div className="hidden lg:flex lg:flex-1 lg:justify-end items-center gap-5">
             <button
               onClick={() => setWModal(true)}
               className="flex items-center justify-center gap-2 bg-gray-100 hover:bg-gray-200 rounded-full p-2 px-3 text-sm"
             >
-              <Plus className="size-5"></Plus> Create
+              <Plus className="size-5" /> Create
             </button>
             <button
               onClick={() => setWModal(true)}
               className="p-2 hover:bg-gray-200 rounded-full"
             >
-              <Bell className="size-5"></Bell>
+              <Bell className="size-5" />
             </button>
             {/* Profile Icon */}
             <div className="relative top-0 right-0 cursor-pointer">
-              <HoverCard className="bg-white">
+              <HoverCard className="bg-white relative">
                 <HoverCardTrigger>
                   <Image
                     src="https://tasnimul.vercel.app/_next/image?url=%2FTasnimul-Haque-3.jpg&w=1080&q=75"
@@ -130,7 +130,8 @@ export default function Header() {
                     height={30}
                     alt="Account"
                     className="size-8 rounded-full"
-                  ></Image>
+                    unoptimized // Disable Next.js image optimization
+                  />
                 </HoverCardTrigger>
                 <HoverCardContent>
                   <div className="absolute top-0 right-0 w-[300px] space-y-4 bg-white p-2 drop-shadow-2xl rounded-xl border">
@@ -140,15 +141,16 @@ export default function Header() {
                         src="https://tasnimul.vercel.app/_next/image?url=%2FTasnimul-Haque-3.jpg&w=1080&q=75"
                         width={50}
                         height={50}
-                        alt=""
-                      ></Image>
-                      <div className="">
+                        alt="Profile"
+                        unoptimized // Disable Next.js image optimization
+                      />
+                      <div>
                         <h3 className="text-xs font-semibold text-black">
                           Tasnimul Haque
                         </h3>
                         <p className="!text-xs font-light text-themeColor/80 flex items-center gap-1 justify-center">
                           Web Developer{" "}
-                          <CheckBadgeIcon className="size-3 -mb-0.5 "></CheckBadgeIcon>
+                          <CheckBadgeIcon className="size-3 -mb-0.5" />
                         </p>
                       </div>
                     </div>
@@ -157,10 +159,9 @@ export default function Header() {
                         Since the internet was introduced to me at an early age,
                         I always aspired to use the internet to benefit myself
                         or other people. I realised that the internet is a
-                        powerful tool capable of solving any problem.{" "}
+                        powerful tool capable of solving any problem.
                       </p>
                     </div>
-
                     <div className="flex items-center gap-2 justify-start">
                       {socials.map((social) => (
                         <Link
@@ -174,12 +175,12 @@ export default function Header() {
                             src={social.icon}
                             width={20}
                             height={20}
-                            alt=""
-                          ></Image>
+                            alt={social.title}
+                          />
                         </Link>
                       ))}
                     </div>
-                    <div className="">
+                    <div>
                       <Link
                         href="https://tasnimul.vercel.app/about"
                         target="_blank"
@@ -196,8 +197,8 @@ export default function Header() {
           </div>
         </nav>
       </header>
-      {isHomePage && <HeaderSlide></HeaderSlide>}
-      <WarningModal wModal={wModal} setWModal={setWModal}></WarningModal>
+      {isHomePage && <HeaderSlide />}
+      <WarningModal wModal={wModal} setWModal={setWModal} />
     </div>
   );
 }
