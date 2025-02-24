@@ -53,7 +53,7 @@ export default function Header() {
   const [sideOpen, setSideOpen] = useState(false);
   const [wModal, setWModal] = useState(false);
   return (
-    <div className="bg-white  top-0 left-0 sticky z-[1000]  pb-3">
+    <div className="bg-white  top-0 left-0 sticky z-[1000]  pb-3 space-y-2">
       <header className="relative left-0 top-0 z-50">
         <nav
           aria-label="Global"
@@ -186,21 +186,7 @@ export default function Header() {
           </div>
         </nav>
       </header>
-      {/* <div className="flex items-center justify-start gap-2 relative left-20 pt-2 pb-3 overflow-x-auto">
-        <button className="bg-black hover:bg-gray-200 px-1 py-1.5 rounded-md w-full text-sm font-semibold text-white">
-          All
-        </button>
-        {youtubeCategories.map((category) => (
-          <button
-            key={category}
-            onClick={() => setWModal(true)}
-            className="bg-gray-100 hover:bg-gray-200 p-1.5 rounded-md w-full text-sm font-medium"
-          >
-            {category}
-          </button>
-        ))}
-        <WarningModal wModal={wModal} setWModal={setWModal}></WarningModal>
-      </div> */}
+
       <HeaderSlide></HeaderSlide>
     </div>
   );
