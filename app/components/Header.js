@@ -197,7 +197,7 @@ export default function Header() {
           </div>
         </nav>
       </header>
-      {isHomePage && <HeaderSlide />}
+      <HeaderSlide />
       <WarningModal wModal={wModal} setWModal={setWModal} />
     </div>
   );
