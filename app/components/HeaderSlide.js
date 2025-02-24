@@ -80,7 +80,7 @@ const HeaderSlide = () => {
   }, [slideIndex]); // Re-run effect when slideIndex changes
 
   return (
-    <div className="slider-container relative overflow-hidden mr-0 ml-auto w-full">
+    <div className="slider-container relative overflow-hidden mr-0 ml-auto">
       <div className="slides flex gap-2">
         <button className="bg-black px-4 py-1.5 rounded-lg text-sm font-semibold text-white whitespace-nowrap">
           All

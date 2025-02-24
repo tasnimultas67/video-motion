@@ -1,8 +1,10 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import { BoltIcon, HomeIcon, TvIcon } from "@heroicons/react/24/solid";
 import { ArrowDownToLine, UserCircle } from "lucide-react";
 
 const FixedLeftBar = () => {
+  const [wModal, setWModal] = useState(false);
   return (
     <div className="fixed top-14 h-screen w-20 m-auto z-[1000]">
       <button className="flex items-center justify-center flex-col text-[10px] rounded-lg m-auto text-center p-3 hover:bg-gray-200 w-16">
