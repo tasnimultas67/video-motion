@@ -82,14 +82,14 @@ const HeaderSlide = () => {
   return (
     <div className="slider-container relative overflow-hidden mr-0 ml-auto w-full">
       <div className="slides flex gap-2">
-        <button className="bg-black px-4 py-1.5 rounded-md text-sm font-semibold text-white whitespace-nowrap">
+        <button className="bg-black px-4 py-1.5 rounded-lg text-sm font-semibold text-white whitespace-nowrap">
           All
         </button>
         {categories.map((category) => (
           <button
             key={category}
             onClick={() => setWModal(true)}
-            className="bg-gray-100 hover:bg-gray-200 px-4 py-1.5 rounded-md text-sm font-medium whitespace-nowrap"
+            className="bg-gray-100 hover:bg-gray-200 px-4 py-1.5 rounded-lg text-sm font-medium whitespace-nowrap"
           >
             {category}
           </button>
