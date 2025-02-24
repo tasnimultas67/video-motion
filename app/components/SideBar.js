@@ -29,36 +29,36 @@ export default function SideBar({ setSideOpen, sideOpen }) {
             {/* Panel with transition */}
             <DialogPanel
               transition
-              className="pointer-events-auto relative w-screen max-w-md transform transition-all duration-500 ease-in-out data-[closed]:-translate-x-full"
+              className="pointer-events-auto relative w-screen max-w-xs transform transition-all duration-500 ease-in-out data-[closed]:-translate-x-full"
             >
-              {/* Close button */}
-              <TransitionChild
-                enter="transition-opacity duration-500"
-                enterFrom="opacity-0"
-                enterTo="opacity-100"
-                leave="transition-opacity duration-500"
-                leaveFrom="opacity-100"
-                leaveTo="opacity-0"
-              >
-                <div className="absolute top-0 right-0 -mr-8 flex pt-4 pl-2 sm:-mr-10 sm:pl-4">
-                  <button
-                    type="button"
-                    onClick={() => setSideOpen(false)}
-                    className="relative rounded-md text-gray-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-white"
-                  >
-                    <span className="absolute -inset-2.5" />
-                    <span className="sr-only">Close panel</span>
-                    <XMarkIcon aria-hidden="true" className="size-6" />
-                  </button>
-                </div>
-              </TransitionChild>
-
               {/* Panel content */}
               <div className="flex h-full flex-col overflow-y-scroll bg-white py-6 shadow-xl">
-                <div className="px-4 sm:px-6">
-                  <DialogTitle className="text-base font-semibold text-gray-900">
-                    Panel title
-                  </DialogTitle>
+                <div className="px-4 sm:px-6 flex items-center justify-start gap-4">
+                  <button className="flex items-center ">
+                    <Bars3Icon
+                      onClick={() => setSideOpen(false)}
+                      className="size-6"
+                    ></Bars3Icon>
+                  </button>
+                  {/* Logo */}
+                  <div className="flex lg:flex-1">
+                    <Link
+                      href="/"
+                      className="-m-1.5 p-1 bg-red-400/10 rounded-lg px-3 border border-red-300 border-dashed"
+                    >
+                      <span className="sr-only">Video Motion</span>
+                      <div className="flex items-center justify-start gap-1">
+                        <Image
+                          src="/favicon.ico"
+                          width={15}
+                          height={15}
+                          alt="logo"
+                          className="rotate-90"
+                        ></Image>
+                        <h3 className="font-bold text-base">Video Motion</h3>
+                      </div>
+                    </Link>
+                  </div>
                 </div>
                 <div className="relative mt-6 flex-1 px-4 sm:px-6">
                   {/* Your content */}

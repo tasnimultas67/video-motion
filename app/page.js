@@ -48,7 +48,7 @@ async function getTrendingVideos() {
 }
 export default async function Home() {
   const videos = await getTrendingVideos();
-  console.log(videos);
+  // console.log(videos);
 
   return (
     <div className="min-h-screen bg-white text-black p-8">
