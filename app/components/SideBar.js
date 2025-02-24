@@ -12,6 +12,8 @@ import {
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import Image from "next/image";
+import { BoltIcon, HomeIcon, TvIcon } from "@heroicons/react/24/solid";
+import { TvMinimalPlayIcon } from "lucide-react";
 
 export default function SideBar({ setSideOpen, sideOpen }) {
   return (
@@ -61,7 +63,21 @@ export default function SideBar({ setSideOpen, sideOpen }) {
                   </div>
                 </div>
                 <div className="relative mt-6 flex-1 px-4 sm:px-6">
-                  {/* Your content */}
+                  <div className="pb-3">
+                    <button className="flex items-center justify-start gap-4 hover:bg-gray-100 p-2 rounded-lg w-full">
+                      <HomeIcon className="size-4"></HomeIcon>
+                      Home
+                    </button>
+                    <button className="flex items-center justify-start gap-4 hover:bg-gray-100 p-2 rounded-lg w-full">
+                      <BoltIcon className="size-4"></BoltIcon>
+                      Shorts
+                    </button>
+                    <button className="flex items-center justify-start gap-4 hover:bg-gray-100 p-2 rounded-lg w-full">
+                      <TvIcon className="size-4"></TvIcon>
+                      Subscriptions
+                    </button>
+                  </div>
+                  <hr />
                 </div>
               </div>
             </DialogPanel>
