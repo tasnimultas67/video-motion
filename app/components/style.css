@@ -11,6 +11,11 @@
     transition: transform 0.3s ease-in-out;
 }
 
+.slides button {
+    flex-shrink: 0;
+    /* Prevent buttons from shrinking */
+}
+
 .arrow {
     cursor: pointer;
     z-index: 10;
