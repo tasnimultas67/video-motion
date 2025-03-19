@@ -117,7 +117,7 @@ export default function Header() {
               <Bell className="size-5" />
             </button>
             {/* Profile Icon */}
-            <div className="relative top-0 right-0 cursor-pointer">
+            <div className="relative top-0 right-0">
               <Popover className="relative">
                 <PopoverButton>
                   <Image
