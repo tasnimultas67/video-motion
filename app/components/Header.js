@@ -4,10 +4,15 @@ import { Bars3Icon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import Image from "next/image";
 import { Bell, CircleUser, Plus } from "lucide-react";
-import { Popover, PopoverButton, PopoverPanel } from "@headlessui/react";
+import {
+  Popover,
+  PopoverButton,
+  PopoverPanel,
+  Transition,
+} from "@headlessui/react";
 import Search from "./Search";
 import SideBar from "./SideBar";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Fragment } from "react";
 import HeaderSlide from "./HeaderSlide";
 import WarningModal from "./WarningModal";
 import { useRouter } from "next/navigation";
@@ -129,56 +134,7 @@ export default function Header() {
                     unoptimized // Disable Next.js image optimization
                   />
                 </PopoverButton>
-                <PopoverPanel className="absolute right-0 z-10 w-60 lg:w-80 p-3 lg:p-4 bg-white shadow-2xl rounded-xl border border-gray-200 ">
-                  <div className="space-y-1.5">
-                    {/* Developer Image */}
-                    <Image
-                      src="https://tasnimul.vercel.app/_next/image?url=https%3A%2F%2Fi.ibb.co.com%2FZd9ZGjm%2FPortrait-of-Tasnimul-Haque.jpg&w=2048&q=75"
-                      width={500}
-                      height={500}
-                      alt="Tasnimul Haque"
-                      className="h-60 lg:h-80 w-full object-cover rounded-lg"
-                    ></Image>
-                    {/* Developer Name */}
-                    <h3 className="text-lg font-semibold">Tasnimul Haque</h3>
-                    {/* About Developer */}
-                    <div>
-                      <p className="text-gray-500 text-xs lg:text-sm 2xl:text-sm">
-                        {" "}
-                        Tasnimul Haque, a 24-year-old developer and student
-                        based in Dhaka, Bangladesh. Tasnimul is passionate about
-                        creating responsive, fast, and user-friendly websites.
-                      </p>
-                      <Link
-                        className=" text-xs underline"
-                        href="https://tasnimul.vercel.app/about"
-                        alt="Developer About Link"
-                      >
-                        See More
-                      </Link>
-                    </div>
-                    {/* Social Media Links */}
-                    <div className="flex items-center gap-2 justify-between bg-red-50 p-2 rounded-lg">
-                      {socials.map((social) => (
-                        <Link
-                          key={social.id}
-                          href={social.href}
-                          target="_blank"
-                          className=""
-                        >
-                          <Image
-                            className="size-4"
-                            src={social.icon}
-                            width={20}
-                            height={20}
-                            alt={social.title}
-                          />
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                </PopoverPanel>
-                {/* <Transition
+                <Transition
                   as={Fragment}
                   enter="transition ease-in duration-300"
                   enterFrom="opacity-0 translate-y-1"
@@ -187,8 +143,57 @@ export default function Header() {
                   leaveFrom="opacity-100 translate-y-0"
                   leaveTo="opacity-0 translate-y-1"
                 >
-                  {" "}
-                </Transition> */}
+                  <PopoverPanel className="absolute right-0 z-10 w-60 lg:w-80 p-3 lg:p-4 bg-white shadow-2xl rounded-xl border border-gray-200 ">
+                    <div className="space-y-1.5">
+                      {/* Developer Image */}
+                      <Image
+                        src="https://tasnimul.vercel.app/_next/image?url=https%3A%2F%2Fi.ibb.co.com%2FZd9ZGjm%2FPortrait-of-Tasnimul-Haque.jpg&w=2048&q=75"
+                        width={500}
+                        height={500}
+                        alt="Tasnimul Haque"
+                        className="h-60 lg:h-80 w-full object-cover rounded-lg"
+                      ></Image>
+                      {/* Developer Name */}
+                      <h3 className="text-lg font-semibold">Tasnimul Haque</h3>
+                      {/* About Developer */}
+                      <div>
+                        <p className="text-gray-500 text-xs lg:text-sm 2xl:text-sm">
+                          {" "}
+                          Tasnimul Haque, a 24-year-old developer and student
+                          based in Dhaka, Bangladesh. Tasnimul is passionate
+                          about creating responsive, fast, and user-friendly
+                          websites.
+                        </p>
+                        <Link
+                          className=" text-xs underline"
+                          href="https://tasnimul.vercel.app/about"
+                          alt="Developer About Link"
+                        >
+                          See More
+                        </Link>
+                      </div>
+                      {/* Social Media Links */}
+                      <div className="flex items-center gap-2 justify-between bg-red-50 p-2 rounded-lg">
+                        {socials.map((social) => (
+                          <Link
+                            key={social.id}
+                            href={social.href}
+                            target="_blank"
+                            className=""
+                          >
+                            <Image
+                              className="size-4"
+                              src={social.icon}
+                              width={20}
+                              height={20}
+                              alt={social.title}
+                            />
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  </PopoverPanel>
+                </Transition>
               </Popover>
             </div>
           </div>
