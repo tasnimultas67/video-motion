@@ -4,18 +4,14 @@ import { Bars3Icon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import Image from "next/image";
 import { Bell, CircleUser, Plus } from "lucide-react";
-import { CheckBadgeIcon } from "@heroicons/react/24/solid";
-import {
-  HoverCard,
-  HoverCardContent,
-  HoverCardTrigger,
-} from "@radix-ui/react-hover-card";
+import { Popover, PopoverButton, PopoverPanel } from "@headlessui/react";
 import Search from "./Search";
 import SideBar from "./SideBar";
 import { useState, useEffect } from "react";
 import HeaderSlide from "./HeaderSlide";
 import WarningModal from "./WarningModal";
 import { useRouter } from "next/navigation";
+import clsx from "clsx";
 
 const socials = [
   {
@@ -122,8 +118,8 @@ export default function Header() {
             </button>
             {/* Profile Icon */}
             <div className="relative top-0 right-0 cursor-pointer">
-              <HoverCard className="bg-white relative">
-                <HoverCardTrigger>
+              <Popover className="relative">
+                <PopoverButton>
                   <Image
                     src="https://tasnimul.vercel.app/_next/image?url=%2FTasnimul-Haque-3.jpg&w=1080&q=75"
                     width={30}
@@ -132,37 +128,37 @@ export default function Header() {
                     className="size-8 rounded-full"
                     unoptimized // Disable Next.js image optimization
                   />
-                </HoverCardTrigger>
-                <HoverCardContent>
-                  <div className="absolute top-0 right-0 w-[300px] space-y-4 bg-white p-2 drop-shadow-2xl rounded-xl border">
-                    <div className="flex items-center gap-2">
-                      <Image
-                        className="rounded-full w-16 h-16 object-cover"
-                        src="https://tasnimul.vercel.app/_next/image?url=%2FTasnimul-Haque-3.jpg&w=1080&q=75"
-                        width={50}
-                        height={50}
-                        alt="Profile"
-                        unoptimized // Disable Next.js image optimization
-                      />
-                      <div>
-                        <h3 className="text-xs font-semibold text-black">
-                          Tasnimul Haque
-                        </h3>
-                        <p className="!text-xs font-light text-themeColor/80 flex items-center gap-1 justify-center">
-                          Web Developer{" "}
-                          <CheckBadgeIcon className="size-3 -mb-0.5" />
-                        </p>
-                      </div>
-                    </div>
+                </PopoverButton>
+                <PopoverPanel className="absolute right-0 z-10 w-60 p-3 bg-white shadow-2xl rounded-xl border border-gray-200 ">
+                  <div className="space-y-3">
+                    {/* Developer Image */}
+                    <Image
+                      src="https://tasnimul.vercel.app/_next/image?url=https%3A%2F%2Fi.ibb.co.com%2FZd9ZGjm%2FPortrait-of-Tasnimul-Haque.jpg&w=2048&q=75"
+                      width={300}
+                      height={500}
+                      alt="Tasnimul Haque"
+                      className="h-60 w-full object-cover rounded-lg"
+                    ></Image>
+                    {/* Developer Name */}
+                    <h3 className="text-lg font-semibold">Tasnimul Haque</h3>
+                    {/* About Developer */}
                     <div>
-                      <p className="text-xs font-light line-clamp-2 leading-tight">
-                        Since the internet was introduced to me at an early age,
-                        I always aspired to use the internet to benefit myself
-                        or other people. I realised that the internet is a
-                        powerful tool capable of solving any problem.
+                      <p className="text-gray-500 text-xs">
+                        {" "}
+                        Tasnimul Haque, a 24-year-old developer and student
+                        based in Dhaka, Bangladesh. Tasnimul is passionate about
+                        creating responsive, fast, and user-friendly websites.
                       </p>
+                      <Link
+                        className=" text-xs underline"
+                        href="https://tasnimul.vercel.app/about"
+                        alt="Developer About Link"
+                      >
+                        See More
+                      </Link>
                     </div>
-                    <div className="flex items-center gap-2 justify-start">
+                    {/* Social Media Links */}
+                    <div className="flex items-center gap-2 justify-between bg-red-50 p-2 rounded-lg">
                       {socials.map((social) => (
                         <Link
                           key={social.id}
@@ -180,19 +176,20 @@ export default function Header() {
                         </Link>
                       ))}
                     </div>
-                    <div>
-                      <Link
-                        href="https://tasnimul.vercel.app/about"
-                        target="_blank"
-                      >
-                        <button className="bg-red-700 w-full p-2 text-white rounded text-xs font-light flex items-center justify-center gap-2">
-                          <CircleUser className="size-4" /> About
-                        </button>
-                      </Link>
-                    </div>
                   </div>
-                </HoverCardContent>
-              </HoverCard>
+                </PopoverPanel>
+                {/* <Transition
+                  as={Fragment}
+                  enter="transition ease-in duration-300"
+                  enterFrom="opacity-0 translate-y-1"
+                  enterTo="opacity-100 translate-y-0"
+                  leave="transition ease-in duration-150"
+                  leaveFrom="opacity-100 translate-y-0"
+                  leaveTo="opacity-0 translate-y-1"
+                >
+                  {" "}
+                </Transition> */}
+              </Popover>
             </div>
           </div>
         </nav>
