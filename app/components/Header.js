@@ -129,21 +129,21 @@ export default function Header() {
                     unoptimized // Disable Next.js image optimization
                   />
                 </PopoverButton>
-                <PopoverPanel className="absolute right-0 z-10 w-60 p-3 bg-white shadow-2xl rounded-xl border border-gray-200 ">
-                  <div className="space-y-3">
+                <PopoverPanel className="absolute right-0 z-10 w-60 lg:w-80 p-3 lg:p-4 bg-white shadow-2xl rounded-xl border border-gray-200 ">
+                  <div className="space-y-1.5">
                     {/* Developer Image */}
                     <Image
                       src="https://tasnimul.vercel.app/_next/image?url=https%3A%2F%2Fi.ibb.co.com%2FZd9ZGjm%2FPortrait-of-Tasnimul-Haque.jpg&w=2048&q=75"
-                      width={300}
+                      width={500}
                       height={500}
                       alt="Tasnimul Haque"
-                      className="h-60 w-full object-cover rounded-lg"
+                      className="h-60 lg:h-80 w-full object-cover rounded-lg"
                     ></Image>
                     {/* Developer Name */}
                     <h3 className="text-lg font-semibold">Tasnimul Haque</h3>
                     {/* About Developer */}
                     <div>
-                      <p className="text-gray-500 text-xs">
+                      <p className="text-gray-500 text-xs lg:text-sm 2xl:text-sm">
                         {" "}
                         Tasnimul Haque, a 24-year-old developer and student
                         based in Dhaka, Bangladesh. Tasnimul is passionate about
