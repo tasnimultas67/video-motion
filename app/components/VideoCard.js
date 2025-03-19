@@ -26,7 +26,7 @@ const VideoCard = ({ video }) => {
             alt={video.snippet.title}
             width={300}
             height={200}
-            className="w-full h-48 object-cover rounded-xl mb-4"
+            className="w-full h-[13rem] object-cover rounded-xl mb-4"
           />
           <span className="absolute bottom-2 right-2 bg-black bg-opacity-75 text-white text-xs px-2 py-1 rounded">
             {formatDuration(video.contentDetails.duration)}
