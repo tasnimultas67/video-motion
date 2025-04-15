@@ -94,7 +94,7 @@ export default function Header() {
               </div>
             </Link>
           </div>
-          <div className="flex lg:hidden">
+          {/* <div className="flex lg:hidden">
             <button
               type="button"
               onClick={() => setMobileMenuOpen(true)}
@@ -103,7 +103,7 @@ export default function Header() {
               <span className="sr-only">Open main menu</span>
               <Bars3Icon aria-hidden="true" className="size-6" />
             </button>
-          </div>
+          </div> */}
           {/* Search Button */}
           <div>
             <Search />
