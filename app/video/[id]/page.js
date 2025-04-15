@@ -141,7 +141,7 @@ export default async function VideoPage({ params }) {
           <p className="font-semibold">
             {Number(video.statistics.viewCount).toLocaleString()} views
           </p>
-          <p className="mt-2">{video.snippet.description}</p>
+          <p className="mt-2 break-words">{video.snippet.description}</p>
         </div>
 
         {/* Comments Section */}
