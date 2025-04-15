@@ -21,12 +21,12 @@ export default function RootLayout({ children }) {
       <body className={`${outfit.className} antialiased`}>
         <Header />
         <div className="flex">
-          <div className="w-[5%]">
+          <div className="hidden w-[5%] md:block">
             <div className="">
               <FixedLeftBar></FixedLeftBar>
             </div>
           </div>
-          <div className="w-[95%]">{children}</div>
+          <div className="md:w-[95%] w-full">{children}</div>
         </div>
       </body>
     </html>

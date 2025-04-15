@@ -93,7 +93,7 @@ export default async function VideoPage({ params }) {
       {/* Main Content */}
       <div className="col-span-2">
         {/* Video Player */}
-        <div className="aspect-w-16 h-[500px]">
+        <div className="aspect-w-16 h-[16rem] md:h-[500px]">
           <iframe
             src={`https://www.youtube.com/embed/${params.id}?autoplay=1`}
             className="w-full h-full rounded-xl"
