@@ -227,7 +227,7 @@ export default async function VideoPage({ params }) {
             </p>
             <div className="space-y-2">
               {popularVideos.map((video) => (
-                <div>
+                <div key={video.id}>
                   <Link key={video.id} href={`/video/${video.id}`} className="">
                     <div className="flex gap-3">
                       <img
