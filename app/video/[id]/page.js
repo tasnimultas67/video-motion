@@ -105,7 +105,7 @@ export default async function VideoPage({ params }) {
         <h1 className="text-2xl font-bold mt-4">{video.snippet.title}</h1>
 
         {/* Channel Info and Actions */}
-        <div className="flex items-center justify-between mt-4">
+        <div className="flex items-center justify-between mt-4 flex-wrap gap-4">
           <div className="flex items-center gap-3">
             <img
               src={video.snippet.thumbnails.default.url}
