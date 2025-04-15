@@ -54,20 +54,15 @@ export default function SideBar({ setSideOpen, sideOpen }) {
                   </button>
                   {/* Logo */}
                   <div className="flex lg:flex-1">
-                    <Link
-                      href="/"
-                      className="-m-1.5 p-1 bg-red-400/10 rounded-lg px-3 border border-red-300 border-dashed"
-                    >
-                      <span className="sr-only">Video Motion</span>
-                      <div className="flex items-center justify-start gap-1">
+                    <Link href="/" className=" p-1.5">
+                      <div className="">
                         <Image
-                          src="/favicon.ico"
-                          width={15}
-                          height={15}
+                          src="/MewMeww Logo.png"
+                          width={120}
+                          height={70}
                           alt="logo"
-                          className="rotate-90"
-                        ></Image>
-                        <h3 className="font-bold text-base">Video Motion</h3>
+                          className=""
+                        />
                       </div>
                     </Link>
                   </div>
