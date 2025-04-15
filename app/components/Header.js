@@ -12,11 +12,10 @@ import {
 } from "@headlessui/react";
 import Search from "./Search";
 import SideBar from "./SideBar";
-import { useState, useEffect, Fragment } from "react";
+import { useState, Fragment } from "react";
 import HeaderSlide from "./HeaderSlide";
 import WarningModal from "./WarningModal";
-import { useRouter } from "next/navigation";
-import clsx from "clsx";
+import { usePathname } from "next/navigation";
 
 const socials = [
   {
@@ -55,8 +54,8 @@ export default function Header() {
   const [sideOpen, setSideOpen] = useState(false);
   const [wModal, setWModal] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const router = useRouter();
-  const isHomePage = router.pathname === "/";
+  const pathname = usePathname();
+  const isHomePage = pathname === "/";
 
   return (
     <div className="bg-white top-0 left-0 sticky z-[1000] pb-3 space-y-2">
@@ -75,7 +74,7 @@ export default function Header() {
               <SideBar sideOpen={sideOpen} setSideOpen={setSideOpen} />
             </button>
           </div>
-          {/* Logo */}
+
           <div className="flex lg:flex-1">
             <Link
               href="/"
@@ -94,20 +93,11 @@ export default function Header() {
               </div>
             </Link>
           </div>
-          {/* <div className="flex lg:hidden">
-            <button
-              type="button"
-              onClick={() => setMobileMenuOpen(true)}
-              className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
-            >
-              <span className="sr-only">Open main menu</span>
-              <Bars3Icon aria-hidden="true" className="size-6" />
-            </button>
-          </div> */}
-          {/* Search Button */}
+
           <div>
             <Search />
           </div>
+
           <div className="hidden lg:flex lg:flex-1 lg:justify-end items-center gap-5">
             <button
               onClick={() => setWModal(true)}
@@ -121,7 +111,7 @@ export default function Header() {
             >
               <Bell className="size-5" />
             </button>
-            {/* Profile Icon */}
+
             <div className="relative top-0 right-0">
               <Popover className="relative">
                 <PopoverButton>
@@ -131,7 +121,7 @@ export default function Header() {
                     height={30}
                     alt="Account"
                     className="size-8 rounded-full"
-                    unoptimized // Disable Next.js image optimization
+                    unoptimized
                   />
                 </PopoverButton>
                 <Transition
@@ -143,43 +133,35 @@ export default function Header() {
                   leaveFrom="opacity-100 translate-y-0"
                   leaveTo="opacity-0 translate-y-1"
                 >
-                  <PopoverPanel className="absolute right-0 z-10 w-60 lg:w-80 p-3 lg:p-4 bg-white shadow-2xl rounded-xl border border-gray-200 ">
+                  <PopoverPanel className="absolute right-0 z-10 w-60 lg:w-80 p-3 lg:p-4 bg-white shadow-2xl rounded-xl border border-gray-200">
                     <div className="space-y-1.5">
-                      {/* Developer Image */}
                       <Image
                         src="https://tasnimul.vercel.app/_next/image?url=https%3A%2F%2Fi.ibb.co.com%2FZd9ZGjm%2FPortrait-of-Tasnimul-Haque.jpg&w=2048&q=75"
                         width={500}
                         height={500}
                         alt="Tasnimul Haque"
                         className="h-60 lg:h-80 w-full object-cover rounded-lg"
-                      ></Image>
-                      {/* Developer Name */}
+                      />
                       <h3 className="text-lg font-semibold">Tasnimul Haque</h3>
-                      {/* About Developer */}
                       <div>
                         <p className="text-gray-500 text-xs lg:text-sm 2xl:text-sm">
-                          {" "}
                           Tasnimul Haque, a 24-year-old developer and student
-                          based in Dhaka, Bangladesh. Tasnimul is passionate
-                          about creating responsive, fast, and user-friendly
-                          websites.
+                          based in Dhaka, Bangladesh.
                         </p>
                         <Link
-                          className=" text-xs underline"
+                          className="text-xs underline"
                           href="https://tasnimul.vercel.app/about"
                           alt="Developer About Link"
                         >
                           See More
                         </Link>
                       </div>
-                      {/* Social Media Links */}
                       <div className="flex items-center gap-2 justify-between bg-red-50 p-2 rounded-lg">
                         {socials.map((social) => (
                           <Link
                             key={social.id}
                             href={social.href}
                             target="_blank"
-                            className=""
                           >
                             <Image
                               className="size-4"
@@ -199,7 +181,9 @@ export default function Header() {
           </div>
         </nav>
       </header>
-      <HeaderSlide />
+
+      {isHomePage && <HeaderSlide />}
+
       <WarningModal wModal={wModal} setWModal={setWModal} />
     </div>
   );
