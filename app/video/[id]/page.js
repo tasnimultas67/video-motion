@@ -102,7 +102,9 @@ export default async function VideoPage({ params }) {
         </div>
 
         {/* Video Metadata */}
-        <h1 className="text-2xl font-bold mt-4">{video.snippet.title}</h1>
+        <h1 className="text-xl md:text-2xl font-bold mt-4">
+          {video.snippet.title}
+        </h1>
 
         {/* Channel Info and Actions */}
         <div className="flex items-center justify-between mt-4 flex-wrap gap-4">
@@ -137,16 +139,16 @@ export default async function VideoPage({ params }) {
         </div>
 
         {/* Video Stats */}
-        <div className="mt-4 p-4 bg-gray-100 rounded-xl">
+        <div className="mt-4 p-4 bg-gray-100 rounded-xl text-sm md:text-base">
           <p className="font-semibold">
             {Number(video.statistics.viewCount).toLocaleString()} views
           </p>
-          <p className="mt-2 break-words">{video.snippet.description}</p>
+          <p className="mt-2 break-words ">{video.snippet.description}</p>
         </div>
 
         {/* Comments Section */}
-        <div className="mt-8">
-          <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
+        <div className="mt-8 text-sm md:text-base">
+          <h2 className=" font-bold mb-4 flex items-center gap-2">
             <MessageSquare className="w-6 h-6" />
             {Number(video.statistics.commentCount).toLocaleString()} Comments
           </h2>
