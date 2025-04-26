@@ -77,14 +77,15 @@ export default function Header() {
 
           <div className="flex lg:flex-1 pl-1 lg:pl-2">
             <Link href="/" className=" p-1.5">
-              <div className="">
+              <div className="flex items-center justify-center gap-1">
                 <Image
-                  src="/MewMeww Logo.png"
-                  width={120}
-                  height={70}
+                  src="/mewmeww-logo.svg"
+                  width={30}
+                  height={50}
                   alt="logo"
                   className=""
                 />
+                <h3 className="font-bold text-xl">MEWMEWW</h3>
               </div>
             </Link>
           </div>
